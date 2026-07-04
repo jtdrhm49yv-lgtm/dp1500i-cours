@@ -803,6 +803,28 @@ body.edit-mode .editbar{display:flex}
  </div>
  <p>La pompe rotation est régulée par l'<b>ELS</b> via son transducteur <b>B603P</b> et sa valve <b>Y603</b>. <b>B5P</b> mesure la pression du <b>circuit</b> de rotation côté actionneur — c'est lui qui sert à l'anti-jamming et à l'affichage. La pression de rotation <b>monte avec le couple</b>.</p>
  <div class="tip"><b>Rappel Partie 1 :</b> <span class="snum">B5P</span> = <b>pression</b> rotation (bloc valves). <b>SRDP/SDP</b> = <b>position</b> du marteau (mât). Rotation qui s'arrête/ne lock pas → capteur de position. Pression rotation fausse → B5P.</div>
+
+ <p style="margin-top:18px"><b>Deux pannes de rotation résolues sur le terrain :</b></p>
+
+ <div class="panne fix">
+ <div class="panne-tag">Panne · Rotation</div>
+ <div class="panne-titre">Rotation forte mais qui décroche par moments (comme si ça coince)</div>
+ <div class="panne-row"><span class="panne-k">Symptôme</span><span class="panne-v">La rotation est <b>élevée</b>, mais <b>par moments elle s'arrête</b> comme si ça coinçait, puis repart. Intermittent, surtout quand le <b>couple monte</b> (roche dure, tige qui force).</span></div>
+ <div class="panne-row"><span class="panne-k">Repère</span><span class="panne-v">B5P (pression rotation) présente et haute → la commande et l'alimentation sont bonnes. Le problème est <b>en aval de la valve</b> : le moteur de rotation lui-même.</span></div>
+ <div class="panne-row"><span class="panne-k">Diagnostic</span><span class="panne-v"><b>Fuite interne du moteur de rotation</b> (usure interne). Une partie de l'huile passe <b>à l'intérieur du moteur</b> au lieu de l'entraîner. Tant que le couple est faible ça tient, mais dès que la résistance monte, la fuite interne l'emporte : le moteur <b>décroche</b> et la rotation cale par à-coups.</span></div>
+ <div class="panne-row"><span class="panne-k sol">Solution</span><span class="panne-v"><span class="sol-txt">Remplacement du moteur de rotation. La rotation redevient franche et régulière, même en charge.</span></span></div>
+ </div>
+ <div class="tip"><b>Le réflexe à retenir :</b> pression de rotation <b>correcte</b> mais rotation qui <b>faiblit/décroche en charge</b> → suspecte une <b>fuite interne du moteur</b>. La pression au capteur ne « voit » pas la fuite interne : elle se manifeste seulement quand le couple demande de l'effort. Un moteur qui fuit en interne chauffe aussi plus vite (huile qui court-circuite en interne).</div>
+
+ <div class="panne fix">
+ <div class="panne-tag">Panne · Rotation</div>
+ <div class="panne-titre">Sens forage ne tourne pas, sens desserrage OK — pas de signal bleu à l'écran</div>
+ <div class="panne-row"><span class="panne-k">Symptôme</span><span class="panne-v">La rotation <b>sens forage ne marche pas</b>, mais le <b>sens desserrage (uncoupling) marche</b>. À l'écran, quand on met la rotation forage au joystick, le <b>signal bleu ne s'affiche pas</b> ; dans l'autre sens, le signal bleu <b>s'affiche bien</b>.</span></div>
+ <div class="panne-row"><span class="panne-k">Repère</span><span class="panne-v">Y5A (sens forage) — le sens qui manque. Y5B (uncoupling) fonctionne et sert de <b>témoin sain</b> pour comparer.</span></div>
+ <div class="panne-row"><span class="panne-k">Diagnostic</span><span class="panne-v">Première idée : le <b>module ne donne pas l'ordre</b>. En réalité, c'est le <b>connecteur de la valve de rotation (Y5A) qui était desserré</b> — faux contact. Le module envoyait bien l'ordre, mais <b>sans circuit fermé, pas de courant dans la bobine</b>, donc <b>aucune confirmation</b> → pas de signal bleu.</span></div>
+ <div class="panne-row"><span class="panne-k sol">Solution</span><span class="panne-v"><span class="sol-txt">Reprendre le connecteur de la valve (re-brancher / re-sertir). Aussitôt, la rotation forage revient et le <b>signal bleu s'affiche</b> quand on commande la rotation.</span></span></div>
+ </div>
+ <div class="warn-box"><b>Ce que ça t'apprend sur le signal bleu :</b> le signal bleu à l'écran ne montre pas seulement l'ordre du joystick — il montre que le module a <b>confirmation que la sortie est réellement alimentée</b>. Le module <b>mesure le courant qui passe dans la bobine</b> de la valve (diagnostic de sortie). Connecteur desserré = circuit ouvert = pas de courant = pas de confirmation = <b>pas de bleu</b>. Donc quand tu commandes et que le bleu <b>ne s'affiche pas</b>, ça ne veut pas dire que le module est mort : dans la plupart des cas le module envoie bien l'ordre, mais le <b>circuit de sortie est coupé</b> (connecteur, fil, ou bobine). Ça t'oriente direct vers la valve, pas vers le module.</div>
 </section>
 
 <section id="h4">
